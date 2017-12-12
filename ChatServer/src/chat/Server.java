@@ -41,7 +41,8 @@ public class Server {
     }
 
     public void sendMessageToAllClients(String msg) {
-        for (ClientHandler o : clients) {
+        ArrayList<ClientHandler> currentClients = clients;
+        for (ClientHandler o : currentClients) {
             o.sendMsg(msg);
         }
 
