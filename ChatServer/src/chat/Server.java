@@ -40,9 +40,8 @@ public class Server {
         }
     }
 
-    public void sendMessageToAllClients(String msg) {
-        ArrayList<ClientHandler> currentClients = clients;
-        for (ClientHandler o : currentClients) {
+    public synchronized void sendMessageToAllClients(String msg) {
+        for (ClientHandler o : clients) {
             o.sendMsg(msg);
         }
 
