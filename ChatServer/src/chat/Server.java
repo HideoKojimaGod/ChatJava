@@ -20,7 +20,9 @@ public class Server {
             while (true) {
                 clientSocket = serverSocket.accept();
                 ClientHandler client = new ClientHandler(clientSocket, this);
-                clients.add(client);
+                synchronized (clients){
+                    clients.add(client);
+                }
                 new Thread(client).start();
             }
         }
